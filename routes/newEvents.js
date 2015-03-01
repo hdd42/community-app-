@@ -15,11 +15,11 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     console.log('in new event');
-    io.sendNewEvent(req.body.title);
+    io.sendNewEvent(JSON.stringify(req.body));
 
     console.log('New event!!!');
    // res.status(200).send('Message Sent!');
-    res.status(200).send('req.body.data => '+req.body.data+"--\n req.body => "+req.body);
+    res.status(200).send('req.body.data => '+req.body.title+"--\n req.body => "+JSON.stringify(req.body));
 });
 
 
