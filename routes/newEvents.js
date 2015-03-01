@@ -5,7 +5,7 @@ var io = require('../socket');
 /* GET home page. */
 router.get('/newEvent', function(req, res, next) {
     console.log('in new event');
-    io.sendNewEvent(req.body,null);
+    io.sendNewEvent(req.query.title,null);
 
     console.log('New event!!!');
     res.status(200).send('Message Sent!');
