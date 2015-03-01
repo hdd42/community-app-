@@ -6,14 +6,20 @@ var io = require('../socket');
 
 router.get('/', function(req, res, next) {
     console.log('in new event');
-    io.sendNewEvent(req.query.title,null);
+    io.sendNewEvent(req.query.title);
 
     console.log('New event!!!');
     res.status(200).send('Message Sent!');
 });
 
 
+router.post('/', function(req, res, next) {
+    console.log('in new event');
+    io.sendNewEvent(req.body);
 
+    console.log('New event!!!');
+    res.status(200).send('Message Sent!');
+});
 
 
 module.exports = router;

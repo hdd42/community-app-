@@ -34,11 +34,6 @@ exports.startIo = function startIo(server){
 
 
 exports.sendNewEvent = function (data,clientId) {
-
-        globalIO.emit(data);
-    
-
-
-
+        globalIO.emit('newEvent',data);
 };
 
