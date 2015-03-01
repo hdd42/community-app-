@@ -24,8 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.get('/newEvent', function (req,res) {
-    io.sendNewEvent();
+app.post('/newEvent', function (req,res) {
+    io.sendNewEvent(req.params.data);
     console.log('New event!!!');
     res.status(200).send('Message Sent!');
 });
