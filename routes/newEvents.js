@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     console.log('in new event');
-    io.sendNewEvent(req.body);
+    io.sendNewEvent(req.body.data);
 
     console.log('New event!!!');
     res.status(200).send('Message Sent!');
