@@ -34,10 +34,9 @@ exports.startIo = function startIo(server){
 
 
 exports.sendNewEvent = function (data,clientId) {
-    if(!clientId)
-    {
+
         globalIO.emit(data);
-    }
+    
 
 
 
