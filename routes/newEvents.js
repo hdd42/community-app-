@@ -4,7 +4,9 @@ var router = express.Router();
 var io = require('../socket');
 /* GET home page. */
 router.post('/newEvent', function(req, res, next) {
-    io.sendNewEvent(req.body);
+    console.log('in new event');
+    io.sendNewEvent(req.body,null);
+
     console.log('New event!!!');
     res.status(200).send('Message Sent!');
 });
