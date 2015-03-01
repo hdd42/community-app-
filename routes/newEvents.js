@@ -18,7 +18,8 @@ router.post('/', function(req, res, next) {
     io.sendNewEvent(req.body.data);
 
     console.log('New event!!!');
-    res.status(200).send('Message Sent!');
+   // res.status(200).send('Message Sent!');
+    res.status(200).send('req.body.data => '+req.body.data+"--\n req.body => "+req.body);
 });
 
 
