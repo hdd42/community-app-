@@ -1,0 +1,26 @@
+
+<button ng-click="register()" class="btn btn-primary">Start</button>
+<br/><br/>
+
+<h3>{{'User added => '+userCount}}</h3>
+<h3>{{'User name => '+userName}}</h3>
+<h2>{{'added question => '+userCount}}</h2>
+<br/>
+<strong> adding now : </strong>
+<h2>{{question}}</h2>
+
+
+<ul>
+  <li ng-repeat="q in questions.items | orderBy:'q.creation_date' ">
+    {{q.title}}
+    <br/>
+   <label class="label label-success">{{q.owner.display_name}}</label>
+    <br/>
+    {{q.tags}}
+    <br/>
+    {{q.body}}
+    <h2>{{q.creation_date *1000 |date:'MM/dd/yyyy @ h:mma'}}</h2>
+
+  </li>
+</ul>
+{{questions.items[0]}}

@@ -1,0 +1,204 @@
+<h2 class="page-header">Post your job</h2>
+
+<div class="row">
+  <div class="col-lg-8">
+
+    <div class="box box-info">
+      <div class="box-header">
+        <h3 class="box-title">General Info</h3>
+        <div class="box-tools pull-right">
+          <div class="label bg-aqua">{{sessionUser.username}}</div>
+        </div>
+      </div>
+      <div class="box-body">
+      <div class="row">
+        <div class="col-lg-8">
+
+            <div class="form-group">
+              <label for="jobTitle">Position Title</label>
+              <input type="text" id="jobTitle" class="form-control" ng-model="job.title"/>
+            </div>
+          <div class="form-group">
+            <label for="yourAnswer">Position Description</label>
+            <div text-angular id="yourAnswer" ng-model="job.description">
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="companyName">Company Name</label>
+            <input type="text" id="companyName" class="form-control" ng-model="job.companyName"/>
+          </div>
+
+          <div class="form-group">
+            <label for="companySize">Company Size</label>
+            <select name="companySize" ng-model="job.companySize" id="companySize" class="form-control">
+              <option value="10">0-10</option>
+              <option value="10">10-50</option>
+              <option value="10"> > 50 </option>
+            </select>
+          </div>
+
+
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="companyState">State</label>
+              <select class="form-control" id="companyState" name="states" ng-model="job.companyState">
+                <option ng-repeat="st in states" value="{{st.abbreviation}}">{{st.name}}</option>
+              </select>
+
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="companyCity">City</label>
+              <select id="companyCity" class="form-control" name="states" ng-model="job.companyCity">
+                <option ng-repeat="ct in cities track by $index" value="{{ct}}">{{ct}}</option>
+              </select>
+
+            </div>
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="canWorkRemote"> Can I work remotely ?</label>
+
+            <input id="canWorkRemote" name="canWorkRemote" ng-model="job.canWorkRemote" class="checkbox checkbox-inline"
+                   type="checkbox">Yes
+          </div>
+
+          <div class="form-group checkbox">
+            <h4>Candidate Levels</h4>
+
+            <label class="label label-info"><input name="canWorkRemote" ng-model="candidateLevels02"
+                   class="checkbox checkbox-inline"
+                   type="checkbox">Entry Level(0-2y)</label>
+            <label class="label label-info"> <input name="canWorkRemote"  ng-model="candidateLevels24"
+                   class="checkbox checkbox-inline"
+                   type="checkbox">Mid Level(2-4)</label>
+              <label class="label label-info"> <input name="canWorkRemote"  ng-model="candidateLevels58"
+                   class="checkbox checkbox-inline"
+                   type="checkbox">Experienced Level(5-8)</label>
+                <label class="label label-info"> <input name="canWorkRemote"  ng-model="candidateLevels9"
+                   class="checkbox checkbox-inline"
+                   type="checkbox">Senior Level( > 8 )</label>
+            <label class="label label-info"> <input name="canWorkRemote"  ng-model="candidateLevelsAll"
+                   class="checkbox checkbox-inline"
+                   type="checkbox">All Levels </label>
+
+          </div>
+
+          <div class="form-group">
+            <label for="mainCategory">Main Category</label>
+            <select name="mainCategory" ng-model="job.mainCategory" id="mainCategory" class="form-control">
+              <option value="dev">Developer</option>
+              <option value="10">Dev Ops</option>
+              <option value="10"> Lead </option>
+              <option value="10"> Test Dev / Test Lead</option>
+              <option value="10"> Database Dev </option>
+              <option value="10"> Database Admin </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <h4>Salary Range</h4>
+            <div class="col-lg-6">
+              <label for="salaryRangeStart"> From $</label>
+              <input type="text" id="salaryRangeStart" class="form-control"
+                     placeholder="$40000" ng-model="job.salaryRangeStart"/>
+            </div>
+            <div class="col-lg-6">
+              <label for="salaryRangeEnd"> To</label>
+              <input type="text" id="salaryRangeEnd" class="form-control"
+                     placeholder="$45000"  ng-model="job.salaryRangeEnd"/>
+
+            </div>
+
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+      </div>
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+
+      </div><!-- /.box-footer-->
+    </div>
+
+
+  <div class="col-lg-4">
+    <div class="box box-info">
+      <div class="box-header">
+        <h3 class="box-title">Other Info</h3>
+
+      </div>
+      <div class="box-body">
+        <h4> Key Responsibilities </h4>
+        <ul>
+          <li ng-repeat="kr in job.key_responsibilities">{{kr}}<label class="badge bg-warning"
+           ng-click="removeResponsibilities(kr)">
+            X</label></li>
+        </ul>
+        <div class="form-group">
+          <input type="text" id="resp" class="form-control" ng-model="responsibility"/>
+          <button ng-disabled="!requirement" class="btn btn-xs btn-default" ng-click="addResponsibilities()">Add</button>
+
+        </div>
+
+      <h4> Requirements </h4>
+        <ul>
+          <li ng-repeat="r in job.requirements">{{r}}<label class="badge bg-warning" ng-click="removeRequirement(r)">
+            X</label></li>
+        </ul>
+        <div class="form-group">
+          <input type="text" id="reqAdd" class="form-control" ng-model="requirement"/>
+          <button ng-disabled="!requirement" class="btn btn-xs btn-default" ng-click="addRequirements()">Add</button>
+
+        </div>
+
+        <h4> Nice to have </h4>
+        <ul>
+          <li ng-repeat="n in job.nice_to_have">{{n}}<label class="badge bg-warning" ng-click="removeNiceToHave(n)">
+            X</label></li>
+        </ul>
+        <div class="form-group">
+          <input type="text" id="nicetoHave" class="form-control" ng-model="niceToHave"/>
+          <button ng-disabled="!niceToHave" class="btn btn-xs btn-default" ng-click="addNiceToHave()">Add</button>
+
+        </div>
+
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+       <button ng-disabled="!job.title || !job.description || !job.mainCategory ||!job.companyName ||!job.companyState "
+               class="btn btn-flat btn-info" ng-click="publish()">Publish </button>
+        <br/>
+        <ul>
+          <li ng-show="!job.title"> Title Required</li>
+          <li ng-show="!job.description"> Description Required</li>
+          <li ng-show="!job.mainCategory"> Main Category Required</li>
+          <li ng-show="!job.companyName"> Company Name Required</li>
+
+          <li ng-show="!job.companyState">State Required</li>
+
+        </ul>
+      </div><!-- /.box-footer-->
+    </div>
+
+  </div>
+
+  </div>
+
+</div>
+
+

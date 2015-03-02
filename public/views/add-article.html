@@ -1,0 +1,103 @@
+<h2 class="page-header">Add New Article</h2>
+<div class="row">
+
+  <div class="col-lg-7">
+
+
+    <div class="box box-info">
+      <div class="box-header">
+        <h3 class="box-title">New Article</h3>
+        <div class="box-tools pull-right">
+          <div class="label bg-aqua">{{sessionUser.username}}</div>
+        </div>
+      </div>
+      <div class="box-body">
+
+        <div role="form">
+          <div class="form-group">
+            <label for="questionTitle">Title</label>
+            <input type="text" name="questionTitle"  class="form-control"
+                   placeholder="What's the title of the article? Be specific."
+                   id="questionTitle"
+                   ng-model="newArticle.title"
+              />
+          </div>
+          <div class="form-group">
+            <label for="questionBody">Article</label>
+            <div text-angular id="questionBody" ng-model="newArticle.body"
+                 placeholder="Place some text here">
+
+            </div>
+
+          </div>
+
+
+
+
+        </div>
+
+
+      </div><!-- /.box-body -->
+      <div class="box-footer" style="border-top: 1px solid skyblue;" >
+        <code ng-repeat="t in articleTags">.{{t.title}}</code>
+      </div><!-- /.box-footer-->
+    </div>
+
+
+  </div>
+
+  <div class="col-lg-4">
+    <div class="box box-info">
+      <div class="box-header">
+        <h3 class="box-title">Category & Tags</h3>
+
+      </div>
+      <div class="box-body">
+
+        <div role="form">
+
+          <div class="form-group">
+            <label>Select main category</label>
+
+            <select ng-model="newArticle.category" ng-options="cat.objectId as cat.title for cat in categories"
+                    class="form-control">
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Select Tags</label>
+            <input type="text" ng-model="tags_filter" placeholder="start typing to search for tags" class="form-control">
+          </div>
+
+          <div ng-show="articleTags.length" class="info-box bg-yellow">
+            <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+            <div class="info-box-content">
+              <span style="margin-right: 2px;" ng-repeat="tag in articleTags" class="label label-info ">{{tag.title}}</span>
+              <span class="info-box-number">{{articleTags.length}}</span>
+
+
+            </div><!-- /.info-box-content -->
+          </div>
+
+          <div ng-repeat="t in tags | filter:tags_filter" ng-show="tags_filter && tags_filter.length >= 2" class="callout callout-info">
+            <h4>{{t.title}}</h4>
+            <p>{{t.description | limitTo:50}}... <label ng-click="addTags(t)" class="btn btn-flat btn-primary btn-xs">Select</label></p>
+          </div>
+
+
+
+
+        </div>
+
+
+      </div><!-- /.box-body -->
+      <div class="box-footer" style="border-top: 1px solid skyblue;" >
+        <button ng-click="postArticle()"
+                ng-disabled="!(newArticle.title && newArticle.body && newArticle.category)"
+                class="btn btn-primary btn-flat">Post Article</button>
+      </div><!-- /.box-footer-->
+    </div>
+  </div>
+
+
+</div>

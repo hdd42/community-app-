@@ -8,15 +8,19 @@ var globalIO ;
 var socketConnection = function socketConnection(socket){
     var request = socket.request;
     var data = socket.client;
-    socket.emit('message', {message: 'Connected!  , info => '+data});
+    socket.emit('message', {message: 'Connected!  , info => '+data.id});
     console.log('Client connected => '+socket.id +"  ,  info => "+request._query['user']+", id : "+data.id);
-    socket.on('fromClient', fromClient);
 
-};
+    socket.on('newQuestionCreated', function (data) {
+        console.log("data : "+JSON.stringify(data));
+        socket.broadcast.emit('newQuestionCreated',data);
+    });
 
-
-var fromClient = function (socket) {
-  console.log("data : "+socket.data);
+//
+    socket.on('newArticleCreated', function (data) {
+        console.log("data : "+JSON.stringify(data));
+        socket.broadcast.emit('newArticleCreated',data);
+    });
 };
 
 

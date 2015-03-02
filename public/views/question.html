@@ -1,0 +1,253 @@
+
+<h2 class="page-header">Question Details</h2>
+
+<div class="row">
+  <div class="col-lg-8">
+
+      <h4>Stats!</h4>
+
+
+        <a class="btn btn-default btn-xs">
+          <span class="badge bg-purple">{{question.votes || 0}}</span>
+          <i class="fa fa-users"></i> Votes
+        </a>
+
+        <a class="btn btn-success btn-flat btn-xs">
+          <span class="badge bg-white">{{question.answer_count || 0}}</span>
+          <i class="fa fa-heart-o"></i> Answers
+        </a>
+        <a class="btn btn-info btn-flat btn-xs">
+          <span class="badge bg-info">{{question.views || 0}}</span>
+          <i class="fa  fa-eye-slash"></i> Views
+        </a>
+
+
+
+    <div class="box box-info">
+      <div class="box-header">
+        <div class="overlay" ng-show="questionLoading">
+          <i class="fa fa-refresh fa-spin"></i>loading question...
+        </div>
+        <h3 class="box-title">{{question.title}}</h3>
+        <div class="box-tools pull-right">
+          <div class="label label-primary">{{question.category.title }}</div>
+          <div class="label label-primary">{{question.createdAt | date:'MM/dd/yyyy @ h:mma' }}</div>
+          <div class="label bg-aqua">{{question.user.username}}</div>
+        </div>
+
+
+
+      </div>
+      <div class="box-body">
+         <div class="btn-box-tool pull-right">
+           <a style="border-bottom:  2px solid lightgreen" ng-if="question.solved" class="btn btn-app">
+
+             <span class="badge bg-green">Ok</span>
+             <i class="fa  fa-check-square-o"></i>Solved!!
+           </a>
+
+           <a ng-if="!question.solved" class="btn btn-app">
+
+             <span class="badge bg-warning">Open</span>
+             <i class="fa fa-eye-slash"></i>Still open!!
+           </a>
+
+         </div>
+        <p ng-bind-html="question.body">
+
+        </p>
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+        Tags :
+        <code style="margin-right: 2px" ng-repeat="t in question.tags">
+          <a href="#"> {{(t.title ? t.title : t)}}</a>
+        </code>
+
+        <div class="">
+          <h3>Comments!</h3>
+          <div ng-repeat="qc in question.question_comments" class="direct-chat-text">
+            <label class="label label-primary">{{qc.user}}</label>
+            <label class="label label-success">{{qc.createdAt.iso ?( qc.createdAt.iso| date:'MM/dd/yyyy @ h:mma') :
+              qc.createdAt| date:'MM/dd/yyyy @ h:mma' }}</label>
+            {{qc.comment}}
+          </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+
+          <input type="text" ng-model="qComment" class="form-control">
+
+        </div>
+        <div class="form-group">
+          <button ng-click="questionComment()" class="btn btn-flat btn-info btn-xs" >Post Comment</button>
+        </div>
+
+      </div><!-- /.box-footer-->
+    </div>
+
+    <h2 class="page-header">Answers ! </h2>
+    <div ng-repeat="a in question.answers | orderBy:a.solved" class="box box-warning">
+      <div class="box-header">
+        <h3 class="box-title">{{a.createdAt.iso ? (a.createdAt.iso | date:'MM/dd/yyyy @ h:mma') : a.createdAt | date:'MM/dd/yyyy @ h:mma'}}</h3>
+        <div class="box-tools pull-right">
+
+          <label class="label bg-olive btn-flat btn-xs margin"  ng-if="question.solved">This answer worked!</label>
+          <button ng-if="!question.solved && question.user.objectId==sessionUser.objectId" ng-click="solvedProblem(a)"
+                  class="btn btn-default btn-flat btn-xs margin">Select this as solver!</button>
+           <div class="label bg-aqua margin">{{a.userName}}</div>
+        </div>
+      </div>
+      <div class="box-body">
+       <p ng-bind-html="a.body"></p>
+
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+
+        <div class="">
+          <h3>Comments!</h3>
+          <div ng-repeat="c in a.comments" class="direct-chat-text">
+            <label class="label label-primary">{{c.user}}</label>
+            <label class="label label-success">{{c.createdAt.iso ?( c.createdAt.iso| date:'MM/dd/yyyy @ h:mma') :
+              c.createdAt| date:'MM/dd/yyyy @ h:mma' }}</label>
+            {{c.comment}}
+          </div>
+        </div>
+
+        <br />
+          <div class="form-group">
+
+            <input type="text" ng-model="a.comment" class="form-control">
+
+          </div>
+          <div class="form-group">
+            <button  ng-click="newComment(a)" class="btn btn-flat btn-info btn-xs" >Post Comment</button>
+          </div>
+
+
+      </div><!-- /.box-footer-->
+    </div>
+
+
+    <div class="box box-success">
+      <div class="box-header">
+        <h3 class="box-title">Your Answer</h3>
+        <div class="box-tools pull-right">
+          <div class="label bg-aqua">{{sessionUser.username || 'please login to answer'}}</div>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="form-group">
+          <label for="yourAnswer">Your Question</label>
+            <div text-angular id="yourAnswer" ng-model="yourAnswer">
+
+            </div>
+
+        </div>
+
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+
+        <button ng-disabled="!yourAnswer" ng-click="newAnswer()" class="btn btn-flat btn-info" >Post answer</button>
+
+      </div><!-- /.box-footer-->
+    </div>
+
+
+  </div>
+
+  <div class="col-lg-4">
+    <h2 class="page-header"> Question  </h2>
+    <div class="box box-success">
+      <div class="box-header">
+        <h3 class="box-title">Did you like that question?</h3>
+        <div class="box-tools pull-right">
+          <div class="label bg-aqua"></div>
+        </div>
+      </div>
+      <div class="box-body">
+       <div class="row">
+
+           <button ng-click="Vote(question.objectId,'up')" class="btn btn-app">
+
+             <span class="badge bg-green">{{question.upVote}}</span>
+             <i class="fa fa-thumbs-o-up"></i>Useful!!
+           </button>
+
+           <button ng-click="Vote(question.objectId,'down')" class="btn btn-app">
+
+             <span class="badge bg-red">{{question.downVote}}</span>
+             <i class="fa fa-thumbs-o-down"></i>Not useful!!
+           </button>
+
+         <button ng-click="startInvite = true;" class="btn btn-app">
+
+           <span class="badge bg-success">{{question.invited_count}}</span>
+           <i class="fa fa-share-square-o"></i>Invite to solve!
+         </button>
+         <label class="badge bg-green-active" ng-show="emailSent">Email Sent!</label>
+         <div class="col-md-5" ng-show="startInvite">
+
+             <div class="form-group">
+               <label for="inviteEmail">Invite</label>
+               <input class="form-control" type="email" ng-model="inviteEmail" placeholder="e-mail to invite"
+                     id="inviteEmail"/>
+
+               <label ng-show="emailSending" class="badge bg-purple-active">Sending...</label>
+               <button ng-disabled="!inviteEmail.indexOf('@')>0" ng-click="Invite(question)" class="btn btn-flat btn-primary btn-xs">Invite</button>
+               <button  ng-click="startInvite = false;" class="btn btn-flat btn-danger btn-xs">Cancel</button>
+             </div>
+
+
+         </div>
+
+
+
+       </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+            <a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
+
+          </div>
+
+        </div>
+
+
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+
+      </div><!-- /.box-footer-->
+    </div>
+
+
+    <h2 class="page-header"> Similar Questions  </h2>
+
+    <div class="box box-info">
+      <div class="box-header">
+        <h3 class="box-title">Hot Questions  in {{question.category.title}}</h3>
+
+      </div>
+      <div class="box-body">
+
+        <div class="overlay" ng-show="hotQuestionLoading">
+          <i class="fa fa-refresh fa-spin"></i>loading questions...
+      </div>
+        <div ng-repeat="hq in hotQuestions track by $index">
+          <p class="text-aqua"><a ng-href="/question/{{hq.objectId}}/{{hq.title}}">{{hq.title}}</a></p>
+        </div>
+
+
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+        <button class="btn btn-flat btn-info btn-xs">See More</button>
+      </div><!-- /.box-footer-->
+    </div>
+
+
+  </div>
+
+</div>
+
+
+

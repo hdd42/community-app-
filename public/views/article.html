@@ -1,0 +1,119 @@
+<div class="row">
+  <div class="col-lg-9">
+
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">{{article.title}}</h3>
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        <p ng-bind-html="article.body"></p>
+      </div><!-- /.box-body -->
+    </div>
+
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h2 class="box-title">Comments</h2>
+      </div><!-- /.box-header -->
+      <div class="box-body" >
+        <div ng-repeat="c in article.article_comments" class="margin" style="border-bottom: 1px solid skyblue" >
+
+
+
+            <code> {{c.body}}</code><br/>
+            <small>{{c.createdAt |date:'MM/dd/yyyy @ HH:mm' }} , Posted By : <cite title="Source Title">{{c.user}}</cite></small>
+
+
+
+        </div>
+
+
+        <blockquote  class="pull-right">
+          <p></p>
+
+        </blockquote>
+
+        <div class="form-group">
+          <label>Your comment</label>
+          <textarea ng-model="comment.body" class="form-control" rows="3" placeholder="Enter your comment ..."></textarea>
+        </div>
+        <div>
+          <button ng-click="postComment()" ng-if="sessionUser" class="btn btn-flat btn-xs btn-default">
+            Post
+          </button>
+          <a ng-if="!sessionUser" href="/login">Please login to comment</a>
+        </div>
+
+      </div><!-- /.box-body -->
+    </div>
+
+  </div>
+
+  <div class="col-lg-3">
+
+    <div class="box box-success">
+      <div class="box-header">
+        <h3 class="box-title">Did you like that article?</h3>
+        <div class="box-tools pull-right">
+          <div class="label bg-aqua"></div>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="row">
+
+          <button ng-click="Vote(article.objectId,'up')" class="btn btn-app">
+
+            <span class="badge bg-green">{{article.upVote}}</span>
+            <i class="fa fa-thumbs-o-up"></i>Useful!!
+          </button>
+
+          <button ng-click="Vote(article.objectId,'down')" class="btn btn-app">
+
+            <span class="badge bg-red">{{article.downVote}}</span>
+            <i class="fa fa-thumbs-o-down"></i>Not useful!!
+          </button>
+
+          <button ng-click="startInvite = true;" class="btn btn-app">
+
+            <span class="badge bg-success">{{article.invited_count}}</span>
+            <i class="fa fa-share-square-o"></i>Invite to solve!
+          </button>
+          <label class="badge bg-green-active" ng-show="emailSent">Email Sent!</label>
+          <div class="col-md-5" ng-show="startInvite">
+
+            <div class="form-group">
+              <label for="inviteEmail">Invite</label>
+              <input class="form-control" type="email" ng-model="inviteEmail" placeholder="e-mail to invite"
+                     id="inviteEmail"/>
+
+              <label ng-show="emailSending" class="badge bg-purple-active">Sending...</label>
+              <button ng-disabled="!inviteEmail.indexOf('@')>0" ng-click="Invite(article)" class="btn btn-flat btn-primary btn-xs">Invite</button>
+              <button  ng-click="startInvite = false;" class="btn btn-flat btn-danger btn-xs">Cancel</button>
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+            <a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
+
+          </div>
+
+        </div>
+
+
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+
+      </div><!-- /.box-footer-->
+    </div>
+
+  </div>
+
+
+
+</div>

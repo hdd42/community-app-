@@ -1,0 +1,373 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <base href="/">
+    <!-- endbuild -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="styles/AdminLTE.min.css"/>
+    <link rel="stylesheet" href="styles/skins/_all-skins.min.css"/>
+    <link rel="stylesheet" href="/bower_components/textAngular/src/textAngular.css"/>
+    <link rel="stylesheet" href="scripts/LTE/plugins/iCheck/square/blue.css"/>
+    <link rel="stylesheet" href="styles/animate.css"/>
+    <link rel="stylesheet" href="styles/ngAnimation.css"/>
+  </head>
+  <body ng-app="parseApp" class="skin-blue" ng-controller="ParentcontrollerCtrl as parentCtrl" >
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+
+
+    <div class="wrapper">
+      <!-- header logo: style can be found in header.less -->
+      <header class="main-header">
+        <a href="/" class="logo"><b>Message</b>App</a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="navbar-custom-menu">
+                  <div ng-if="!sessionUser">
+
+                    <a class="btn btn-primary btn-xs" href="/login">Login</a>
+                    <a class="btn btn-success btn-xs" href="/register">Register</a>
+
+                  </div>
+
+
+
+            <ul ng-if="sessionUser" class="nav navbar-nav">
+                       <!-- Messages: style can be found in dropdown.less-->
+              <li class="dropdown messages-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-envelope-o"></i>
+                  <span class="label label-success">4</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">You have 4 messages</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                      <li><!-- start message -->
+                        <a href="#">
+                          <div class="pull-left">
+                            <img src="../../img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                          </div>
+                          <h4>
+                            Support Team
+                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                          </h4>
+                          <p>Why not buy a new awesome theme?</p>
+                        </a>
+                      </li><!-- end message -->
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="#">See All Messages</a></li>
+                </ul>
+              </li>
+              <!-- Notifications: style can be found in dropdown.less -->
+              <li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-bell-o"></i>
+                  <span class="label label-warning">10</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">You have 10 notifications</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="#">View all</a></li>
+                </ul>
+              </li>
+              <!-- Tasks: style can be found in dropdown.less -->
+              <li class="dropdown tasks-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-flag-o"></i>
+                  <span class="label label-danger">9</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">You have 9 tasks</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                      <li><!-- Task item -->
+                        <a href="#">
+                          <h3>
+                            Design some buttons
+                            <small class="pull-right">20%</small>
+                          </h3>
+                          <div class="progress xs">
+                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                              <span class="sr-only">20% Complete</span>
+                            </div>
+                          </div>
+                        </a>
+                      </li><!-- end task item -->
+                    </ul>
+                  </li>
+                  <li class="footer">
+                    <a href="#">View all tasks</a>
+                  </li>
+                </ul>
+              </li>
+
+
+              <!-- User Account: style can be found in dropdown.less -->
+              <li ng-if="sessionUser"  class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="{{sesionUser.image || '../../img/user2-160x160.jpg'}}" class="user-image" alt="User Image"/>
+                  <span class="hidden-xs">My Account</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                    <img src="{{sesionUser.image || '../../img/user2-160x160.jpg'}}" class="img-circle" alt="User Image" />
+                    <p>
+                     {{sessionUser.username}}
+                      <small>Member since {{sessionUser.createdAt|date:'yyyy'}}</small>
+                    </p>
+                  </li>
+
+                  <!-- Menu Body -->
+                  <li class="user-body">
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Questions</a>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Answers</a>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Jobs Applied</a>
+                    </div>
+                  </li>
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    </div>
+                    <div class="pull-right">
+                      <button ng-click="signOut()" class="btn btn-default btn-flat">Sign out</button>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+
+
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <!-- =============================================== -->
+
+      <!-- Left side column. contains the sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- Sidebar user panel -->
+
+          <!-- search form -->
+
+          <!-- /.search form -->
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <li >
+              <a href="/">
+                <i class="fa fa-home"></i> <span>Home</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/so">
+                <i class="fa fa-home"></i> <span>Stack Exchange</span>
+
+              </a>
+
+            </li>
+
+            <li>
+              <a href="/add-article">
+                <i class="fa fa-home"></i> <span>Add Article</span>
+
+              </a>
+
+            </li>
+
+
+            <li>
+              <a href="#">
+                <i class="fa fa-"></i> <span>Jobs</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/job-listing"><i class="fa fa-circle-o"></i> Jobs</a></li>
+                <li><a href="/post-job"><i class="fa fa-circle-o"></i> Post Job</a></li>
+
+              </ul>
+            </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-question-circle"></i> <span>Questions</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/messages"><i class="fa fa-pencil"></i> New Questions</a></li>
+                <li><a href="/messages"><i class="fa fa-circle-o"></i> My Questions</a></li>
+                <li><a href="/messages"><i class="fa fa-circle-o"></i> My Answers</a></li>
+                <li><a href="/messages"><i class="fa fa-flag-o"></i> Favorites</a></li>
+                <li><a href="/categories"><i class="fa fa-tasks"></i>Categories</a></li>
+
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+              <i class="fa fa-dashboard"></i> <span>Account</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+              <ul class="treeview-menu">
+                <li ng-if="sessionUser"><a href="/login"><i class="fa fa-circle-o"></i> Profile</a></li>
+                <li ng-if="!sessionUser"><a href="/login"><i class="fa fa-circle-o"></i> Login</a></li>
+                <li ng-if="!sessionUser"><a href="/register"><i class="fa fa-circle-o"></i>Register</a></li>
+              </ul>
+            </li>
+
+            <li><a href="/help"><i class="fa fa-book"></i> Help</a></li>
+
+
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- =============================================== -->
+
+      <!-- Right side column. Contains the navbar and content of the page -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+
+
+
+            <ol class="breadcrumb">
+              <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+
+              <li class="active">{{pageTitle}}</li>
+            </ol>
+
+
+        </section>
+
+        <!-- Main content -->
+        <section class="content"  ng-view="">
+
+
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 2.0
+        </div>
+        <strong>Copyright &copy; 2014-2015 <a href="http://google.com">HasbelKader</a>.</strong> All rights reserved.
+      </footer>
+    </div><!-- ./wrapper -->
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="//www.parsecdn.com/js/parse-1.3.5.min.js"></script>
+    <script>
+      Parse.initialize("UcZRuak4sVwSZceuOOnkIy5en8G7fivkX5I90iCT", "945HDmXIYEW3nd3KCKU4pKmduJZQ4LCkoFf05RIm");
+
+
+    </script>
+
+    <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+    <script>
+
+
+
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- endbower -->
+    <script src="scripts/LTE/app.min.lte.js"></script>
+    <script src="scripts/LTE/plugins/iCheck/icheck.min.js"></script>
+    <script src='/bower_components/textAngular/dist/textAngular-rangy.min.js'></script>
+
+    <script src='/bower_components/textAngular/dist/textAngular.min.js'></script>
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/Message.js"></script>
+        <script src="scripts/services/messagefactory.js"></script>
+        <script src="scripts/controllers/categories.js"></script>
+        <script src="scripts/services/categories.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/services/user.js"></script>
+        <script src="scripts/controllers/question.js"></script>
+        <script src="scripts/controllers/category.js"></script>
+        <script src="scripts/controllers/so.js"></script>
+        <script src="scripts/services/sofactory.js"></script>
+        <script src="scripts/controllers/job-listing.js"></script>
+        <script src="scripts/controllers/post-job.js"></script>
+        <script src="scripts/services/jobs.js"></script>
+        <script src="scripts/services/general.js"></script>
+        <script src="scripts/services/generalfactory.js"></script>
+        <script src="scripts/services/ioclientservice.js"></script>
+        <script src="scripts/controllers/parentcontroller.js"></script>
+        <script src="scripts/controllers/article.js"></script>
+        <script src="scripts/services/articlefactory.js"></script>
+        <script src="scripts/controllers/add-article.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

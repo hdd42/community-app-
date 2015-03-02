@@ -1,0 +1,127 @@
+<h2 ng-if="job" class="page-header">Job Details</h2>
+<h2 ng-if="jobList" class="page-header">Job List</h2>
+
+
+<div class="row" ng-if="jobList">
+  <div class="col-lg-12">
+
+    <div class="box box-info">
+      <div class="box-header">
+        <h3 class="box-title">Latest Jobs</h3>
+        <div class="box-tools pull-right">
+          <div class="input-group">
+            <input type="text" ng-model="search" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search">
+            <div class="input-group-btn">
+              <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="box-body">
+
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tbody><tr>
+              <th>Posted</th>
+              <th>Company</th>
+              <th>Main Category</th>
+              <th>Location</th>
+              <th>Title</th>
+              <th></th>
+            </tr>
+            <tr ng-repeat="j in jobList | filter:search">
+              <td>{{j.createdAt | date:'MM/dd/yyyy @ h:mma'}} </td>
+              <td>{{j.companyName}}</td>
+              <td>{{j.mainCategory}}</td>
+              <td><span class="label label-primary">{{j.companyCity+'-'+j.companyState}}</span></td>
+              <td>{{j.title}}
+
+              </td>
+              <td><a href="/job-listing/{{j.title.split(' ').join('-')}}">Details</a>
+
+              </td>
+            </tr>
+
+            </tbody></table>
+        </div>
+
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+        <code>More</code>
+      </div><!-- /.box-footer-->
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="row" ng-if="job">
+
+
+  <div class="col-lg-8">
+
+    <div class="box box-info">
+      <div class="box-header">
+        <h3 class="box-title">{{job.title}}</h3>
+        <div class="box-tools pull-right">
+
+        </div>
+      </div>
+      <div class="box-body">
+
+        <p ng-bind-html="job.description">
+
+        </p>
+        <h3>Requirements</h3>
+        <ul>
+          <li ng-repeat="rq in job.requirements">{{rq}}</li>
+        </ul>
+        <h3>Key Responsibilities</h3>
+        <ul>
+          <li ng-repeat="kr in job.key_responsibilities">{{kr}}</li>
+        </ul>
+        <h3>Nice to have</h3>
+        <ul>
+          <li ng-repeat="nh in job.nice_to_have">{{nh}}</li>
+        </ul>
+
+
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+        <button class="btn btn-primary btn-flat btn-xs">Apply!</button>
+      </div><!-- /.box-footer-->
+    </div>
+  </div>
+
+
+  <div class="col-lg-4">
+    <div class="box box-info">
+      <div class="box-header">
+        <h3 class="box-title">Company info</h3>
+        <div class="box-tools pull-right">
+
+        </div>
+      </div>
+      <div class="box-body">
+        <dl class="dl-horizontal">
+          <dt>Company Name</dt>
+          <dd>{{job.companyName}}</dd>
+          <dt>Size</dt>
+          <dd>{{job.companySize}}</dd>
+          <dt>Location</dt>
+          <dd>{{job.companyState+"-"+job.companyCity}}</dd>
+          <dt>Salary</dt>
+          <dd>{{(job.salaryRangeStart | currency:"$":0) +"-"+(job.salaryRangeEnd |currency:"$":0)}}</dd>
+
+        </dl>
+
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+        <button class="btn btn-primary btn-flat btn-xs">Apply!</button>
+      </div><!-- /.box-footer-->
+    </div>
+  </div>
+
+</div>
