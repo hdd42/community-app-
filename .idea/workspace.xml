@@ -24,13 +24,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55539143" vertical-offset="117" max-vertical-offset="1037">
+            <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="1037">
               <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
               <folding>
                 <element signature="e#1060#1138#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/scripts/controllers/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.5361446" vertical-offset="0" max-vertical-offset="1275">
+              <caret line="176" column="17" selection-start-line="176" selection-start-column="8" selection-end-line="176" selection-end-column="17" />
+              <folding>
+                <element signature="e#946#988#0" expanded="false" />
+                <element signature="e#1031#1075#0" expanded="false" />
+                <element signature="e#1120#1229#0" expanded="false" />
+                <element signature="e#1274#1491#0" expanded="false" />
+                <element signature="e#1552#1688#0" expanded="false" />
+                <element signature="e#1707#1740#0" expanded="false" />
+                <element signature="e#1840#1935#0" expanded="false" />
+                <element signature="e#1962#1995#0" expanded="false" />
+                <element signature="e#2078#2119#0" expanded="false" />
+                <element signature="e#2146#2178#0" expanded="false" />
+                <element signature="e#2235#2477#0" expanded="false" />
+                <element signature="e#2496#2529#0" expanded="false" />
+                <element signature="e#2584#2618#0" expanded="false" />
+                <element signature="e#2654#2767#0" expanded="false" />
+                <element signature="e#2800#3108#0" expanded="false" />
+                <element signature="e#3143#4239#0" expanded="false" />
+                <element signature="e#4381#4519#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -110,19 +138,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="www" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/www">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1156">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!block;n#normalizePort#0" expanded="false" />
-                <element signature="n#!!block;n#onError#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/socket/index.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -148,6 +163,7 @@
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/index.ejs" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/public/scripts/controllers/main.js" />
       </list>
     </option>
   </component>
@@ -225,6 +241,60 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="routes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessageAppNode_js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessageAppNode_js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessageAppNode_js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessageAppNode_js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessageAppNode_js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessageAppNode_js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -681,10 +751,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55539143" vertical-offset="117" max-vertical-offset="1037">
+        <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="1037">
           <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
           <folding>
             <element signature="e#1060#1138#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/scripts/controllers/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5361446" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="176" column="17" selection-start-line="176" selection-start-column="8" selection-end-line="176" selection-end-column="17" />
+          <folding>
+            <element signature="e#946#988#0" expanded="false" />
+            <element signature="e#1031#1075#0" expanded="false" />
+            <element signature="e#1120#1229#0" expanded="false" />
+            <element signature="e#1274#1491#0" expanded="false" />
+            <element signature="e#1552#1688#0" expanded="false" />
+            <element signature="e#1707#1740#0" expanded="false" />
+            <element signature="e#1840#1935#0" expanded="false" />
+            <element signature="e#1962#1995#0" expanded="false" />
+            <element signature="e#2078#2119#0" expanded="false" />
+            <element signature="e#2146#2178#0" expanded="false" />
+            <element signature="e#2235#2477#0" expanded="false" />
+            <element signature="e#2496#2529#0" expanded="false" />
+            <element signature="e#2584#2618#0" expanded="false" />
+            <element signature="e#2654#2767#0" expanded="false" />
+            <element signature="e#2800#3108#0" expanded="false" />
+            <element signature="e#3143#4239#0" expanded="false" />
+            <element signature="e#4381#4519#0" expanded="false" />
           </folding>
         </state>
       </provider>
