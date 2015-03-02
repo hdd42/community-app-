@@ -26,10 +26,9 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/newEvent',newEvents)
 
-app.get('*', function (req,res) {
-    res.render('index.html');
-})
-
+app.use(function(req, res) {
+    res.sendfile(__dirname + '/Public/index.html');
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
