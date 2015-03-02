@@ -27,7 +27,7 @@ app.use('/users', users);
 app.use('/newEvent',newEvents)
 
 app.get('*', function (req,res) {
-    res.send('index.html');
+    res.render('index');
 })
 
 // catch 404 and forward to error handler
