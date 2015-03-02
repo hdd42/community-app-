@@ -11,9 +11,9 @@ angular.module('parseApp')
   .service('ioClientService', function ($timeout) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var user = JSON.parse(JSON.stringify(Parse.User.current()));
-    //var socketUrlRemote = 'http://messageapp.azurewebsites.net/?user='+user.username || 'guest';
-    var socketUrl = 'http://localhost:3000/?user='+(user ? user.username : 'guest');
-    this.socket = io(socketUrl);
+    var socketUrlRemote = 'http://messageapp.azurewebsites.net/?user='+user.username || 'guest';
+    //var socketUrl = 'http://localhost:3000/?user='+(user ? user.username : 'guest');
+    this.socket = io(socketUrlRemote);
 
     this.on = function(eventName, callback) {
       if (this.socket) {
