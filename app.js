@@ -28,7 +28,7 @@ app.use('/newEvent',newEvents)
 
 app.use(function(req, res) {
     //res.sendfile(__dirname + '/public/index.html');
-    res.redirect('/'+req.url);
+    res.redirect(req.url);
 });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
