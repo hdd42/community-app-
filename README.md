@@ -3,7 +3,8 @@ community app with socket.io Node / Express / angular / parse cloud.sdk
 
 live demo : 
 http://messageapp.azurewebsites.net/
-demo user : demo / 123456
+
+demo user : demo1 / 123456
 (or you can create an account)
 
 this is a http://stackoverflow.com/ like or clone community app . 
