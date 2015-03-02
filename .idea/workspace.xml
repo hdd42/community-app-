@@ -36,20 +36,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ioclientservice.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ioclientservice.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/scripts/services/ioclientservice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.33283132" vertical-offset="0" max-vertical-offset="799">
+              <caret line="13" column="103" selection-start-line="13" selection-start-column="103" selection-end-line="13" selection-end-column="103" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6128527" vertical-offset="5134" max-vertical-offset="6443">
+            <state vertical-scroll-proportion="-15.038462" vertical-offset="5134" max-vertical-offset="6443">
               <caret line="325" column="78" selection-start-line="325" selection-start-column="78" selection-end-line="325" selection-end-column="78" />
               <folding />
             </state>
@@ -121,8 +121,8 @@
         <option value="$PROJECT_DIR$/socket/index.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/public/scripts/services/ioclientservice.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/scripts/services/ioclientservice.js" />
       </list>
     </option>
   </component>
@@ -660,18 +660,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/scripts/services/ioclientservice.js">
+    <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+        <state vertical-scroll-proportion="-15.038462" vertical-offset="5134" max-vertical-offset="6443">
+          <caret line="325" column="78" selection-start-line="325" selection-start-column="78" selection-end-line="325" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
+    <entry file="file://$PROJECT_DIR$/public/scripts/services/ioclientservice.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6128527" vertical-offset="5134" max-vertical-offset="6443">
-          <caret line="325" column="78" selection-start-line="325" selection-start-column="78" selection-end-line="325" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.33283132" vertical-offset="0" max-vertical-offset="799">
+          <caret line="13" column="103" selection-start-line="13" selection-start-column="103" selection-end-line="13" selection-end-column="103" />
           <folding />
         </state>
       </provider>
