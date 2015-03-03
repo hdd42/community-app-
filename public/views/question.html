@@ -206,8 +206,20 @@
        </div>
         <div class="row">
           <div class="col-lg-12">
-            <a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
-            <a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#"
+                 socialshare
+                 socialshare-provider="facebook"
+                 socialshare-text="{{question.title}}"
+                 socialshare-url="$location.path()">
+                  Share me
+              </a>
+              <a href="#"
+                 socialshare
+                 socialshare-provider="twitter"
+                 socialshare-text="{{question.title}}"
+                 socialshare-url="$location.path()">
+                  Tweet
+              </a>
 
           </div>
 

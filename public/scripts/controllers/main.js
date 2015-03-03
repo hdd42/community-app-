@@ -173,9 +173,7 @@ angular.module('parseApp')
 
     }
 
-    if($scope.currentMessages.length < 1){
-        $location.path('/');
-    }
+
 
     ioClientService.on('newQuestionCreated', function (data) {
       $scope.currentMessages.unshift(JSON.parse(JSON.stringify(data)));
