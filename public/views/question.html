@@ -208,12 +208,12 @@
           <div class="col-lg-12">
               <a socialshare  socialshare-provider="facebook"
                  socialshare-text="question.title"
-                 socialshare-url="http://www.messageapp.azurewebsites.net/{{$location.path()}}"
+                 socialshare-url="http://www.messageapp.azurewebsites.net/question/{{question.objectId}}/{{question.title.split(' ').join('-')}}"
                  class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
 
               <a socialshare  socialshare-provider="twitter"
                  socialshare-text="question.title"
-                 socialshare-url="http://www.messageapp.azurewebsites.net/{{$location.path()}}"
+                 socialshare-url="http://www.messageapp.azurewebsites.net/question/{{question.objectId}}"
                  class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter-square"></i></a>
 
           </div>
