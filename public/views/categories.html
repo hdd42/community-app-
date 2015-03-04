@@ -1,14 +1,15 @@
 
 <h2 class="page-header">All Categories</h2>
-<div class="page-header">
+<!--<div class="page-header">
   <button  class="btn btn-app " data-toggle="modal" data-target="#addCategoryModal">
     <i class="fa fa-save"></i>
     Add new</button>
   <div ng-show="loading">Loading...</div>
-</div>
+</div>-->
 
-<h4 class="page-header">Filters</h4>
+
 <div class="row">
+
 
   <div class="col-lg-2">
     <div class="form-group">
@@ -24,24 +25,64 @@
              id="searchCategoryDesc">
     </div>
   </div>
+    <div class="col-lg-2">
+        <div class="form-group">
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">Sort By </button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a ng-click="sort='title'; reverse=false" href="#">Sort A-Z</a></li>
+                    <li><a ng-click="sort='title'; reverse=true" href="#">Sort Z-A</a></li>
+
+                    <li class="divider"></li>
+                    <li><a ng-click="sort='question_count'; reverse=!reverse" href="#">By question counts</a></li>
+                    <li><a ng-click="sort='article_count'; reverse=!reverse" href="#">By article counts</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-4"  ng-repeat="c in categories | filter:search">
+  <div class="col-lg-4"  ng-repeat="c in categories | filter:search | orderBy:sort:reverse">
     <div class="box box-solid" style="height: 175px;">
       <div class="box-header with-border">
         <i class="fa fa-list-alt"></i>
-        <h3 class="box-title"><a href="/category/{{c.title}}/{{c.objectId}}">{{c.title}}</a></h3>
+        <h3 class="box-title"><a href="/category/{{c.title.split(' ').join('-')}}/{{c.objectId}}">{{c.title}}</a></h3>
 
       </div><!-- /.box-header -->
       <div class="box-body">
-        <p>{{c.description}}</p>
+        <p>{{c.description|limitTo:120}}...</p>
       </div><!-- /.box-body -->
       <div class="box-footer">
-        <i ng-click="deleteCategory(c)" class="fa fa-fw fa-trash-o"></i> Delete
+          <div class="col-lg-6" style="border-right: 1px solid skyblue">
+              <a href="/category/{{c.title.split(' ').join('-')}}/questions/{{c.objectId}}">
+                  <span class="info-box-text">Questions <i class="fa fa-question-circle"></i></span>
+                  <span class="info-box-number">{{c.question_count}}</span>
+
+              </a>
+
+          </div>
+          <div class="col-lg-6">
+              <a href="/category/{{c.title.split(' ').join('-')}}/articles/{{c.objectId}}">
+                  <span class="info-box-text">Articles <i class="fa fa-list-alt"></i>
+              </span>
+                  <span class="info-box-number">{{c.article_count}}</span>
+              </a>
+
+          </div>
+
+
+
+
+       <!-- <i ng-click="deleteCategory(c)" class="fa fa-fw fa-trash-o"></i> Delete
         <i class="fa fa-fw fa-edit"></i> <span  ng-click="startEditing(c)">
         Edit
-      </span>
+      </span>-->
       </div>
     </div>
 

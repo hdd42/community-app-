@@ -121,13 +121,72 @@ angular.module('parseApp')
       return categoryDeferred.promise;
     };
 
+    var getCategoryQuestions = function (id) {
+        var defered = $q.defer();
+
+        var category = new Parse.Object("Category");
+        var questions = Parse.Object.extend("Messages");
+        category.id = id;
+        var query = new Parse.Query(questions);
+
+        query.equalTo('category',category);
+
+        query.include(["category","user"]);
+        query.select(["objectId","title","body","tags","views",
+            "votes","answer_count","answers","solved","invited_count","upVote","downVote",
+            "question_comments","category.title","user.username"]);
+
+        query.limit(30);
+
+        query.descending("createdAt");
+        query.find({
+            success: function(results) {
+            defered.resolve(JSON.parse(JSON.stringify(results)))
+            },
+            error: function(error) {
+               defered.reject(error);
+            }
+        });
+
+
+        return defered.promise;
+    }
+
+
+    var getCategoryArticles = function (id) {
+            var defered = $q.defer();
+
+
+             var category = new Parse.Object("Category");
+            var articles = Parse.Object.extend("Articles");
+            category.id = id;
+            var query = new Parse.Query(articles);
+
+            query.equalTo('category',category);
+            query.limit(50);
+            query.descending("createdAt");
+            query.find({
+                success: function(results) {
+                    defered.resolve(JSON.parse(JSON.stringify(results)))
+                },
+                error: function(error) {
+                    defered.reject(error);
+                }
+            });
+
+
+            return defered.promise;
+        }
+
     // Public API here
     return {
       getAllCategories: getAllCategories,
       addNewCategory:addNewCategory,
       updateCategory:updateCategory,
       deleteCategory:deleteCategory,
-      getOneCategory:getOneCategory
+      getOneCategory:getOneCategory,
+      getCategoryQuestions:getCategoryQuestions,
+      getCategoryArticles:getCategoryArticles
     };
 
 

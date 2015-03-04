@@ -13,6 +13,18 @@ angular.module('parseApp')
     if (!$routeParams.id) {
       $location.path("/");
     }
+        $scope.tab_1 ='active'
+    if ($routeParams.topic) {
+            var topic = $routeParams.topic;
+            if(topic == 'articles') {
+                $scope.tab_1 = '';
+                $scope.tab_2 = 'active';
+            }
+            }
+
+    $scope.questions = [];
+    $scope.articles = [];
+
     $rootScope.pageTitle = "Category";
     var catId =$routeParams.id;
 
@@ -22,5 +34,19 @@ angular.module('parseApp')
 
      $scope.category = category;
    })
+
+   categoryFactory.getCategoryQuestions(catId).then(function (questions) {
+
+            $scope.questions = questions;
+   }, function (error) {
+       console.log(error)
+   })
+
+    categoryFactory.getCategoryArticles(catId).then(function (articles) {
+
+            $scope.articles = articles;
+        }, function (error) {
+            console.log(error)
+        })
 
   });

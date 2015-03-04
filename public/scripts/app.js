@@ -52,7 +52,7 @@ angular
         templateUrl: 'views/category.html',
         controller: 'CategoryCtrl'
       })
-      .when('/category/:title/:id', {
+      .when('/category/:title/:topic?/:id', {
         templateUrl: 'views/category.html',
         controller: 'CategoryDetailCtrl'
       })
@@ -77,6 +77,14 @@ angular
         templateUrl: 'views/add-article.html',
         controller: 'AddArticleCtrl'
       })
+      .when('/articles', {
+            templateUrl: 'views/articles.html',
+            controller: 'ArticlesCtrl'
+        })
+      .when('/questions', {
+            templateUrl: 'views/questions.html',
+            controller: 'QuestionsCtrl'
+        })
       .otherwise({
         redirectTo: '/'
       });

@@ -4,7 +4,103 @@
 
 
   <div class="col-lg-9">
+      <div class="nav-tabs-custom" style="border-right: 1px solid skyblue">
+          <ul class="nav nav-tabs">
+              <li class="{{tab_1}}"><a ng-click="tab_1 ='active'; tab_2=''" href="">Recently asked questions</a></li>
+              <li class="{{tab_2}}"><a ng-click="tab_1=''; tab_2='active'" href="" >Recent Articles</a></li>
 
+              <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+          </ul>
+          <div class="tab-content">
+
+
+
+              <div class="tab-pane {{tab_1}}" id="tab_1">
+                  <div class="box main" ng-class="{'box-success':m.solved,'box-warning' :!m.solved}" style="border-bottom: 1px solid lightskyblue;"
+                       ng-repeat="m in questions track by $index">
+                      <div class="box-header with-border">
+                          <i class="fa fa-text-width"></i>
+                          <a ng-href="{{'/question/'+m.objectId+'/'+ m.title.split(' ').join('-')}}">
+                              <h3 class="box-title">{{m.title|limitTo:75}}...</h3></a>
+
+
+
+                          <div class="box-tools pull-right">
+                              <a class="btn btn-default btn-xs">
+                                  <span class="badge bg-purple">{{m.votes || 0}}</span>
+                                  <i class="fa fa-users"></i> Vote
+                              </a>
+                              <a class="btn btn-success btn-flat btn-xs">
+                                  <span class="badge bg-white">{{m.answer_count || 0}}</span>
+                                  <i class="fa fa-heart-o"></i> Answers
+                              </a>
+                              <a class="btn btn-info btn-flat btn-xs">
+                                  <span class="badge bg-info">{{m.views || 0}}</span>
+                                  <i class="fa  fa-eye-slash"></i> Views
+                              </a>
+                              <a class="btn btn-info btn-flat btn-xs"> <i class="fa fa-fw fa-user"></i>{{m.user.username}}</a>
+                              <button class="btn btn-xs btn-primary">{{m.category.title}}</button>
+                          </div>
+                      </div><!-- /.box-header -->
+                      <div class="box-body">
+                          <div class="box-tools pull-right">
+                              <a ng-if="m.solved" class="btn btn-default btn-xs">
+                                  <span class="badge bg-green">Solved!</span>
+                                  <i class="fa fa-check-square-o"></i>
+                              </a>
+                              <a ng-if="!m.solved" class="btn btn-warning btn-xs">
+                                  <span class="badge bg-warning">Still Open!</span>
+                                  <i class="fa fa-eye-slash"></i>
+                              </a>
+                          </div>
+
+
+                          <!--<p ng-bind-html="(m.body | limitTo:250)"></p>-->
+                          <a href="{{'/question/'+m.objectId+'/'+m.title.split(' ').join('-')}}" class="small-box-footer">
+                              See Question & answers <i class="fa fa-arrow-circle-right"></i>
+                          </a>
+                      </div><!-- /.box-body -->
+                      <div class="box-footer">
+                          <div>
+                              Tags : <label style="margin-right: 2px" ng-repeat="t in m.tags" class="label label-default" >
+                              {{(t.id ? t.title : t)}}</label>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+
+              <div class="tab-pane {{tab_2}}" id="tab_2">
+                  <div ng-repeat="article in articles" class="box box-solid">
+                      <div class="box-header with-border">
+                          <i class="fa fa-text-width"></i>
+                          <h3 class="box-title">{{article.createdAt|date:'MM/dd/yyyy @ HH:mm'}}</h3>
+                          <div class="box-tools pull-right">
+                              <a class="btn btn-default btn-xs">
+                                  <span class="badge bg-purple">{{article.votes || 0}}</span>
+                                  <i class="fa fa-users"></i> Votes
+                              </a>
+
+                              <a class="btn btn-info btn-flat btn-xs">
+                                  <span class="badge bg-info">{{article.views || 0}}</span>
+                                  <i class="fa  fa-eye-slash"></i> Views
+                              </a>
+
+                              <button class="btn btn-xs btn-primary">{{article.category.title}}</button>
+                          </div>
+                      </div><!-- /.box-header -->
+                      <div class="box-body">
+                          <blockquote>
+                              <p><a href="/article/{{article.title.split(' ').join('-')}}/{{article.objectId}}">{{article.title}}</a></p>
+                              <small>Posted by : <cite title="Source Title">{{article.user.username}}</cite></small>
+                          </blockquote>
+                          Tags  :<code style="margin-right: 2px" ng-repeat="t in article.tags">{{t.title}}</code>
+                      </div><!-- /.box-body -->
+                  </div>
+              </div>
+          </div>
+
+      </div>
   </div>
 
 
