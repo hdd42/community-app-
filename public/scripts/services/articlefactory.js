@@ -30,7 +30,7 @@ angular.module('parseApp')
         query.select(["objectId","title","body","tags","views",
           "votes","category.title","user.username"]);
         query.descending("createdAt");
-        query.limit(10);
+        query.limit(40);
         query.find({
           success: function(results) {
 

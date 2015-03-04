@@ -12,6 +12,11 @@ angular.module('parseApp')
     '$rootScope','ioClientService',
     function ($scope,messageFactory,categoryFactory, $location,$rootScope,ioClientService) {
 
+     if (!$rootScope.sessionUser) {
+            $rootScope.returnUrl = $location.path();
+            $location.path("/login");
+      }
+
       $rootScope.pageTitle ="New Question";
     $scope.categories =[];
     $scope.tags =[];

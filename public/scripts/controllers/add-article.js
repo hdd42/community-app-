@@ -8,7 +8,13 @@
  * Controller of the parseApp
  */
 angular.module('parseApp')
-  .controller('AddArticleCtrl', function ($scope,categoryFactory,articleFactory,$rootScope,ioClientService) {
+  .controller('AddArticleCtrl', function ($scope,categoryFactory,articleFactory,$rootScope,ioClientService,$location) {
+
+    if (!$rootScope.sessionUser) {
+                $rootScope.returnUrl = $location.path();
+                $location.path("/login");
+        }
+
 
     $rootScope.pageTitle ="New Question";
     $scope.categories =[];

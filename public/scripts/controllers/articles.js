@@ -8,10 +8,12 @@
  * Controller of the parseApp
  */
 angular.module('parseApp')
-  .controller('ArticlesCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ArticlesCtrl', function ($scope,articleFactory) {
+
+        $scope.articles = [];
+
+        articleFactory.getAllArticles().then(function (result) {
+           $scope.articles = result;
+        });
+
   });

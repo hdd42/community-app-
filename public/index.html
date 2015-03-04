@@ -207,26 +207,47 @@
               </a>
             </li>
 
-            <li>
+           <!-- <li>
               <a href="/so">
                 <i class="fa fa-home"></i> <span>Stack Exchange</span>
 
               </a>
 
-            </li>
+            </li>-->
 
-            <li>
-              <a href="/add-article">
-                <i class="fa fa-home"></i> <span>Add Article</span>
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fa fa-question-circle"></i> <span>Questions</span> <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="/messages"><i class="fa fa-pencil"></i> New Questions</a></li>
+                      <li><a href="/messages"><i class="fa fa-circle-o"></i> My Questions & Answers</a></li>
 
-              </a>
+                      <li><a href="/messages"><i class="fa fa-flag-o"></i> Favorites</a></li>
+                      <li><a href="/categories"><i class="fa fa-tasks"></i>Categories</a></li>
 
-            </li>
+                  </ul>
+              </li>
+
+
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fa fa-tasks"></i> <span>Articles</span> <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="/articles"><i class="fa fa-pencil"></i> Articles</a></li>
+                      <li><a href="/add-article"><i class="fa fa-circle-o"></i>Post Article</a></li>
+
+                      <li><a href="/messages"><i class="fa fa-flag-o"></i> Favorites</a></li>
+                      <li><a href="/categories"><i class="fa fa-tasks"></i>Categories</a></li>
+
+                  </ul>
+              </li>
 
 
             <li>
               <a href="#">
-                <i class="fa fa-"></i> <span>Jobs</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-code"></i> <span>Jobs</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="/job-listing"><i class="fa fa-circle-o"></i> Jobs</a></li>
@@ -235,19 +256,7 @@
               </ul>
             </li>
 
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-question-circle"></i> <span>Questions</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="/messages"><i class="fa fa-pencil"></i> New Questions</a></li>
-                <li><a href="/messages"><i class="fa fa-circle-o"></i> My Questions</a></li>
-                <li><a href="/messages"><i class="fa fa-circle-o"></i> My Answers</a></li>
-                <li><a href="/messages"><i class="fa fa-flag-o"></i> Favorites</a></li>
-                <li><a href="/categories"><i class="fa fa-tasks"></i>Categories</a></li>
 
-              </ul>
-            </li>
             <li>
               <a href="#">
               <i class="fa fa-dashboard"></i> <span>Account</span> <i class="fa fa-angle-left pull-right"></i>
@@ -369,6 +378,8 @@
         <script src="scripts/controllers/article.js"></script>
         <script src="scripts/services/articlefactory.js"></script>
         <script src="scripts/controllers/add-article.js"></script>
+        <script src="scripts/controllers/articles.js"></script>
+        <script src="scripts/controllers/questions.js"></script>
         <!-- endbuild -->
 </body>
 </html>
