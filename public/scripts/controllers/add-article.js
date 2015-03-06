@@ -51,7 +51,7 @@ angular.module('parseApp')
 
       articleFactory.addNewArticle($scope.newArticle).then(function (result) {
         ioClientService.emit('newArticleCreated',result)
-        //$location.path('/article/'+result.objectId+'/'+result.title);
+        $location.path('/article/'+result.title.split(' ').join('-')+'/'+result.objectId);
 
       }, function (error) {
         console.log(error);

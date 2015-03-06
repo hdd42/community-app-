@@ -27,8 +27,8 @@ app.use('/users', users);
 app.use('/newEvent',newEvents)
 
 app.use(function(req, res) {
-   // res.sendfile(__dirname + '/public/index.html');
-    res.render('index', { title: 'Community App' });
+    res.sendfile(__dirname + '/public/index.html');
+   // res.render('index', { title: 'Community App' });
 });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

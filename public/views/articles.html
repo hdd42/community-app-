@@ -1,4 +1,53 @@
-<p>This is the articles view.</p>
+<div class="row">
+
+</div>
+
+<div class="row">
+    <div class="col-lg-9">
+        <div ng-repeat="article in articles">
+            <div class="box box-info">
+                <div class="box-header ui-sortable-handle" style="cursor: move;">
+                    <i class="fa fa-codepen"></i>
+                    <h3 class="box-title">{{article.createdAt|date:'MM/dd/yyyy @ HH:mm'}}</h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                    <span class="label label-info">
+                        <i class="fa fa-code-fork"></i> {{article.category.title}}</span>
+                    </div><!-- /. tools -->
+                </div>
+                <div class="box-body">
+
+                    <blockquote>
+                        <p><a href="/article/{{article.title.split(' ').join('-')}}/{{article.objectId}}">{{article.title}}</a></p>
+                        <small>Posted by : <cite title="Source Title">{{article.user.username}}</cite></small>
+                    </blockquote>
+
+                    <span class="badge bg-purple">{{article.votes || 0}}</span>
+                    <i class="fa fa-users"></i> Votes
+
+                    <span class="badge bg-info">{{article.views || 0}}</span>
+                    <i class="fa  fa-eye-slash"></i> Views
+
+                    <span class="badge bg-aqua">{{article.article_comments.length || 0}}</span>
+                    <i class="fa fa-users"></i> Comments
+
+                </div>
+                <div class="box-footer clearfix">
+                    <code class="margin" ng-repeat="t in article.tags">{{t.title}}</code>
+                    <button class="pull-right btn btn-flat btn-xs btn-primary" id="sendEmail">Read <i class="fa fa-arrow-circle-right"></i></button>
+                </div>
+            </div>
+
+
+        </div>
 
 
 
+
+    </div>
+
+
+    <div class="col-lg-3">
+
+    </div>
+</div>

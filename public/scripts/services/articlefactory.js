@@ -27,7 +27,7 @@ angular.module('parseApp')
         var articles = Parse.Object.extend("Articles");
         var query = new Parse.Query(articles);
         query.include(["category","user"]);
-        query.select(["objectId","title","body","tags","views",
+        query.select(["objectId","title","body","tags","views","article_comments",
           "votes","category.title","user.username"]);
         query.descending("createdAt");
         query.limit(40);
