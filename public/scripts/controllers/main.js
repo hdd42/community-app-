@@ -133,45 +133,59 @@ angular.module('parseApp')
 
     $scope.search = function () {
 
-      $scope.search_tab_active =true;
-        $scope.searchTab ='active';
-        $scope.tab_1 ='';
-        $scope.tab_2 ='';
-      $scope.searching =true;
-
-      //search.searchTerm"
-      //inTitleDesc
-      //inTitleOnly
-      var searchTerm = {};
-      $scope.searchRange = angular.element('#searchRange').val();
 
 
-      if(!$scope.searchRange)
-      {
-        searchTerm.searchRange ="";
-      }
-      else{
-      var sr = $scope.searchRange.split('-');
-       searchTerm.startDate = sr[0].trim();
-       searchTerm.endDate = sr[1].trim();
-      }
 
-      searchTerm.searchIn = angular.element("input[name='searchOptions']:checked").val() || 'title';
-      searchTerm.searchTerm = $scope.search.searchTerm.toLowerCase();
-      console.log(searchTerm);
-
-      messageFactory.searchInMessages(searchTerm).then(function (result) {
-        $scope.searchResults =result;
-
-        $scope.searching =false;
-
-        if(result.length < 1){
-          $scope.noMatchFound = true;
+        if(!$scope.search.searchTerm){
+            alert("Please Provide a search term!");
+            return;
         }
-        $scope.searchActive = false;
-      }, function (error) {
-        console.log(error);
-      });
+        else{
+            $scope.search_tab_active =true;
+            $scope.searchTab ='active';
+            $scope.tab_1 ='';
+            $scope.tab_2 ='';
+            $scope.searching =true;
+
+
+            //search.searchTerm"
+            //inTitleDesc
+            //inTitleOnly
+            var searchTerm = {};
+            $scope.searchRange = angular.element('#searchRange').val();
+
+
+            if(!$scope.searchRange)
+            {
+                searchTerm.searchRange ="";
+            }
+            else{
+                var sr = $scope.searchRange.split('-');
+                searchTerm.startDate = sr[0].trim();
+                searchTerm.endDate = sr[1].trim();
+            }
+
+            searchTerm.searchIn = angular.element("input[name='searchOptions']:checked").val() || 'title';
+
+            searchTerm.searchTerm = $scope.search.searchTerm.toLowerCase();
+            console.log(searchTerm);
+
+            messageFactory.searchInMessages(searchTerm).then(function (result) {
+                $scope.searchResults =result;
+
+                $scope.searching =false;
+
+                if(result.length < 1){
+                    $scope.noMatchFound = true;
+                }
+                $scope.searchActive = false;
+            }, function (error) {
+                console.log(error);
+            });
+
+        }
+
+
 
     }
 

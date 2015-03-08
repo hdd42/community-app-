@@ -31,7 +31,7 @@ angular.module('parseApp')
           "votes","answer_count","answers","solved","invited_count","upVote","downVote",
           "question_comments","category.title","user.username"]);
         query.descending("createdAt");
-        query.limit(40);
+        query.limit(50);
         query.find({
           success: function(results) {
 
@@ -78,51 +78,51 @@ angular.module('parseApp')
     var searchInMessages = function (searchTerm) {
 
 
-      var messageDeferred = $q.defer();
-      var searchResult =[];
+        var messageDeferred = $q.defer();
+        var searchResult = [];
 
-     // var mainQuery = Parse.Query.or.apply(this, queries);
-      var messages = Parse.Object.extend("Messages");
-      var query = new Parse.Query(messages);
-
-
+        // var mainQuery = Parse.Query.or.apply(this, queries);
+        var messages = Parse.Object.extend("Messages");
+        var query = new Parse.Query(messages);
 
 
-      var queries = searchTerm.searchTerm.split(' ').filter(function (item) {
-        if(item.length > 2) return true;
-      })
 
-      query.include(["category","user"]);
-      query.select(["objectId","title","body","tags","views",
-        "votes","answer_count","answers","solved","invited_count","upVote","downVote",
-        "question_comments","category.title","user.username"]);
-      query.limit(15);
-      query.descending("createdAt");
+        var queries = searchTerm.searchTerm.split(' ').filter(function (item) {
+            if (item.length > 2) return true;
+        })
+
+        query.include(["category", "user"]);
+        query.select(["objectId", "title", "body", "tags", "views",
+            "votes", "answer_count", "answers", "solved", "invited_count", "upVote", "downVote",
+            "question_comments", "category.title", "user.username"]);
+        query.limit(15);
+        query.descending("createdAt");
 
 
-        if(searchTerm.searchIn == "title"){
-          queries.forEach(function (item) {
-            query.matches("title_lower", ".*"+item+".*");
-          })
+        if (searchTerm.searchIn == "title") {
+            queries.forEach(function (item) {
+                query.matches("title_lower", ".*" + item + ".*");
+            })
 
-        }else{
+        } else {
 
-          queries.forEach(function (item) {
-            query.matches("body_lower", ".*"+item+".*");
-          })
+            queries.forEach(function (item) {
+                query.matches("body_lower", ".*" + item + ".*");
+            })
 
 
         }
         query.find({
-          success: function(results) {
+            success: function (results) {
 
-            searchResult= JSON.parse(JSON.stringify(results));
-            messageDeferred.resolve(searchResult);
-          },
-          error: function(error) {
-            messageDeferred.reject(error);
-          }
+                searchResult = JSON.parse(JSON.stringify(results));
+                messageDeferred.resolve(searchResult);
+            },
+            error: function (error) {
+                messageDeferred.reject(error);
+            }
         });
+
 
       return messageDeferred.promise;
     } ;
