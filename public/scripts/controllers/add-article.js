@@ -40,6 +40,7 @@ angular.module('parseApp')
     }
 
 
+
     $scope.postArticle = function () {
       $scope.newArticle.tags = [];
       $scope.articleTags.forEach(function (t) {

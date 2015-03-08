@@ -109,6 +109,8 @@ angular.module('parseApp')
       $scope.jobs = data;
 
     })
+
+
     $scope.previous = function () {
       if($scope.startCount > 0){
         $scope.startCount+=10;
