@@ -1,9 +1,12 @@
 
 <div class="row">
   <div class="col-lg-4">
-
+      <div ng-show="emptySearch">
+          <label class="label label-danger">Please provide a serach term!</label>
+      </div>
     <div class="sidebar-form">
-      <div class="input-group">
+
+             <div class="input-group">
         <input type="text" ng-focus="searchActive=true" name="q" class="form-control" ng-model="search.searchTerm" id="searchTerm" placeholder="Search..."/>
               <span class="input-group-btn">
                 <button name='search' id='search-btn' class="btn btn-flat" ng-click="search()"><i class="fa fa-search"></i></button>

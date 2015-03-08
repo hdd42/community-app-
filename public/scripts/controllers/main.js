@@ -8,7 +8,7 @@
  * Controller of the parseApp
  */
 angular.module('parseApp')
-  .controller('MainCtrl', function ($scope,messageFactory,$location,jobsFactory,ioClientService,articleFactory) {
+  .controller('MainCtrl', function ($scope,messageFactory,$location,jobsFactory,ioClientService,articleFactory,$timeout) {
 
     $scope.loading = true;
     $scope.messages = [];
@@ -137,8 +137,15 @@ angular.module('parseApp')
 
 
         if(!$scope.search.searchTerm){
-            alert("Please Provide a search term!");
-            return;
+            $scope.emptySearch = true;
+
+            $timeout(function () {
+
+                $scope.emptySearch = false;
+                return;
+            },2000);
+
+
         }
         else{
             $scope.search_tab_active =true;
