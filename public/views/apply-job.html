@@ -1,0 +1,104 @@
+
+<h3 class="page-header">You are applying for <strong>  {{jobTitle}}</strong></h3>
+<div ng-show="applicationSuccess" class="row">
+<div class="col-lg-12">
+    <div class="info-box bg-green">
+        <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text">Others Applied</span>
+            <span class="info-box-number">{{2+1}}</span>
+            <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+            </div>
+                  <span class="progress-description">
+                    Successfully applied!
+                  </span>
+        </div><!-- /.info-box-content -->
+    </div>
+</div>
+</div>
+<div ng-hide="applicationSuccess" class="row">
+
+    <div class="col-lg-6">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-bullhorn"></i>
+                <h3 class="box-title">Apply!</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+                <div class="form-group margin">
+                    <label for="exampleInputEmail1">Full Name</label>
+                    <input ng-model="user.fullName"
+                    type="text" class="form-control" id="fullName" placeholder="Enter first and last name">
+                </div>
+
+
+                <div class="input-group margin">
+                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                    <input ng-model="user.email" type="email"
+                     class="form-control" id="exampleInputEmail1"
+                     placeholder="Enter email" value="{{user.email}}">
+                </div>
+
+                <div  class="input-group margin">
+
+                    <span class="input-group-addon"><i class="fa fa-phone-square fa-fw"></i></span>
+
+                    <input ng-model="user.phoneNumber"
+                           type="text" class="form-control" id="phone" placeholder="phone">
+                </div>
+
+
+            </div><!-- /.box-body -->
+        </div>
+
+    </div>
+
+    <div class="col-lg-6">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-bullhorn"></i>
+                <h3 class="box-title">Resume!</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+                <div class="form-group">
+                    <label for="cvInputFile">Select / Upload CV </label>
+                    <input ng-disabled="files.length == 3 " file-upload multiple
+                           type="file" id="cvInputFile"
+                           class="btn btn-flat btn-primary"
+                           accept=".pdf,.doc,.docx">
+                    <p class="help-block">(.pdf or word only!) <label ng-show="files.length >= 3" class="label label-danger">3 files uploaded!</label>
+                        <label ng-show="files.length < 3" >You can upload up to 3 files</label>  </p>
+                <ul>
+                    <li ng-repeat="f in files">{{f.name}} <label ng-click="files.splice($index,1)" class="badge bg-red-active">X</label> </li>
+                </ul>
+                </div>
+
+                <div class="form-group">
+                    <label for="coverLetter">Resume / Cover Letter (skip this if you already uploaded one above ) </label>
+                    <div text-angular id="coverLetter" ng-model="user.coverLetter">
+
+                    </div>
+                </div>
+
+
+
+
+                <button ng-hide="proccess.status" ng-click="apply()" class="btn btn-flat btn-primary">Apply!</button>
+                <label class="label label-info" ng-show="proccess.status && !proccess.error_text">{{proccess.text}}
+                <i class="fa fa-spinner fa-spin"></i>
+                </label>
+                <label class="label label-danger" ng-show="proccess.error_text">{{proccess.error_text}}
+                    <i class="fa fa-eraser"></i>
+                </label>
+
+            </div><!-- /.box-body -->
+        </div>
+
+    </div>
+
+</div>
