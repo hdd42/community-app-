@@ -103,12 +103,45 @@ angular.module('parseApp')
 
     };
 
+    var jobStats = function (jobId,type) {
+            var d = $q.defer()
+
+        var job = Parse.Object.extend("Jobs");
+        var query = new Parse.Query(job);
+
+        query.get(jobId,{
+            success: function(job) {
+                if (type=='views') {
+                    job.increment('views');
+                }else if('applied'){
+                    job.increment('applied_count');
+                }else{
+                    job.increment('views');
+                    job.increment('applied_count');
+                }
+                job.save();
+                d.resolve(JSON.parse(JSON.stringify(job)));
+
+            },
+            error: function(error) {
+                d.reject(error);
+            }
+        });
+
+
+
+            return d.promise;
+
+
+        }
+
     // Public API here
     return {
       postJob: postJob,
       getAllJobs:getAllJobs,
       getFiveJobs:getFiveJobs,
-      getOneJob:getOneJob
+      getOneJob:getOneJob,
+        jobStats:jobStats
 
     }
   });

@@ -85,6 +85,12 @@ angular
             templateUrl: 'views/questions.html',
             controller: 'QuestionsCtrl'
         })
+      .when('/apply-job/:jobTitle/:jobId', {
+            templateUrl: 'views/apply-job.html',
+            controller: 'ApplyToJobCtrl'
+        })
+
+        //
       .otherwise({
         redirectTo: '/'
       });
