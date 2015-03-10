@@ -14,6 +14,8 @@ angular.module('parseApp')
             $rootScope.returnUrl = $location.path();
             $location.path("/login");
         }
+
+
      $scope.files = [];
      $scope.jobTitle = $routeParams.jobTitle;
      $scope.jobId = $routeParams.jobId ;
@@ -30,12 +32,20 @@ angular.module('parseApp')
              text:"Form Processing..."
          };
 
+         if (!$scope.user.fullName ) {
+
+             $scope.proccess = {
+                 status:false,
+                 error_text: "Please fill all required fields (Name, phone, email)"
+             };
+             return false;
+         }
 
 
          var application = {};
          application.user = Parse.User.current();
          application.company ="Microsoft";
-         application.contact = [$scope.user.fullName,$scope.user.email,$scope.user.phone];
+         application.contact = [$scope.user.fullName,$scope.user.email||$rootScope.sessionUser.email,$scope.user.phone];
          application.resume_cover = $scope.user.coverLetter;
 
         fileUploadFactory.uploadFiles($scope.files,'JopApply','uploads',application).then(function (data) {
