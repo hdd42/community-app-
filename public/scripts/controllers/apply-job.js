@@ -53,7 +53,7 @@ angular.module('parseApp')
             console.log(data);
         }, function (error) {
             $scope.proccess = {
-                status:true,
+                status:false,
                 error_text: error.message
             };
         });
